@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\play.universal\\Play.Universal.csproj": {}
+    "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\Play.Universal\\Play.Universal.csproj": {}
   },
   "projects": {
-    "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\play.universal\\Play.Universal.csproj": {
+    "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\Play.Universal\\Play.Universal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\play.universal\\Play.Universal.csproj",
+        "projectUniqueName": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\Play.Universal\\Play.Universal.csproj",
         "projectName": "Play.Universal",
-        "projectPath": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\play.universal\\Play.Universal.csproj",
+        "projectPath": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\Play.Universal\\Play.Universal.csproj",
         "packagesPath": "C:\\Users\\M S I\\.nuget\\packages\\",
-        "outputPath": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\play.universal\\obj\\",
+        "outputPath": "D:\\Microservices\\utsmicroservice\\Play.Universal\\src\\Play.Universal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

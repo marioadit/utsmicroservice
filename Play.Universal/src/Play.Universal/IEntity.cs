@@ -7,7 +7,7 @@ namespace Play.Universal
 {
     public interface IEntity
     {
-        int Id { get; init; }
+        int Id { get; set; }
 
     }
 }

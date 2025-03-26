@@ -10,3 +10,4 @@ D:\Microservices\utsmicroservice\Play.Universal\src\play.universal\obj\Release\n
 D:\Microservices\utsmicroservice\Play.Universal\src\play.universal\obj\Release\net9.0\refint\Play.Universal.dll
 D:\Microservices\utsmicroservice\Play.Universal\src\play.universal\obj\Release\net9.0\Play.Universal.pdb
 D:\Microservices\utsmicroservice\Play.Universal\src\play.universal\obj\Release\net9.0\ref\Play.Universal.dll
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Release\net9.0\Play.Universal.sourcelink.json

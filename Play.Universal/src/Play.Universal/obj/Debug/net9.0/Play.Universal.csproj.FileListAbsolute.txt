@@ -1,0 +1,13 @@
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\bin\Debug\net9.0\Play.Universal.deps.json
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\bin\Debug\net9.0\Play.Universal.dll
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\bin\Debug\net9.0\Play.Universal.pdb
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.csproj.AssemblyReference.cache
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.GeneratedMSBuildEditorConfig.editorconfig
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.AssemblyInfoInputs.cache
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.AssemblyInfo.cs
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.csproj.CoreCompileInputs.cache
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.sourcelink.json
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.dll
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\refint\Play.Universal.dll
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\Play.Universal.pdb
+D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\obj\Debug\net9.0\ref\Play.Universal.dll

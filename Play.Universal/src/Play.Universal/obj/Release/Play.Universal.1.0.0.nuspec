@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Play.Universal</authors>
     <description>Package Description</description>
-    <repository type="git" />
+    <repository type="git" commit="51ba6252bccc7e9631165b6af8b29fae7d30e0ad" />
     <dependencies>
       <group targetFramework="net9.0">
         <dependency id="Microsoft.Extensions.Configuration" version="9.0.3" exclude="Build,Analyzers" />
@@ -16,6 +16,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\Microservices\utsmicroservice\Play.Universal\src\play.universal\bin\Release\net9.0\Play.Universal.dll" target="lib\net9.0\Play.Universal.dll" />
+    <file src="D:\Microservices\utsmicroservice\Play.Universal\src\Play.Universal\bin\Release\net9.0\Play.Universal.dll" target="lib\net9.0\Play.Universal.dll" />
   </files>
 </package>
