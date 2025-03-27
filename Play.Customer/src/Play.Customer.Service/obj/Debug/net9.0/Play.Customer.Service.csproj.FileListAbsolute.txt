@@ -45,3 +45,6 @@ D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Deb
 D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\SharpCompress.dll
 D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\Snappier.dll
 D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\ZstdSharp.dll
+D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Microservices\utsmicroservice\Play.Customer\src\Play.Customer.Service\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

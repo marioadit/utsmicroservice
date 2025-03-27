@@ -6,7 +6,7 @@ using Play.Universal;
 
 namespace Play.Customer.Service.Entity
 {
-    public class Customer : IEntity
+    public class Customers : IEntity
     {
     public int Id { get; set; }
     public string CustomerName { get; set; }
