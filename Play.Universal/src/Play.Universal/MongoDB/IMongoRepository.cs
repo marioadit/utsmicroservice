@@ -18,7 +18,7 @@ namespace Play.Universal.MongoDB
 
         public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await dbCollection.InsertOneAsync(entity);
         }
 
         public async Task DeleteAsync(int id)

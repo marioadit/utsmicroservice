@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Play.Universal</authors>
     <description>Package Description</description>
-    <repository type="git" commit="51ba6252bccc7e9631165b6af8b29fae7d30e0ad" />
+    <repository type="git" commit="ca9fd275dd6af379f5781d3b5f000723f44cde0d" />
     <dependencies>
       <group targetFramework="net9.0">
         <dependency id="Microsoft.Extensions.Configuration" version="9.0.3" exclude="Build,Analyzers" />
