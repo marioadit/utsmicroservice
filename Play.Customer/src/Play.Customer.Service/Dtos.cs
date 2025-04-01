@@ -9,7 +9,7 @@ namespace Play.Customer.Service
     public class Dtos
     {
         public record CustomerDto(int Id, [Required] string CustomerName, string ContactNumber, string Email, string Address);
-        public record CreateCustomerDto([Required] string CustomerName, string ContactNumber, string Email, string Address);
+        public record CreateCustomerDto(int Id, [Required] string CustomerName, string ContactNumber, string Email, string Address);
         public record UpdateCustomerDto([Required] string CustomerName, string ContactNumber, string Email, string Address);
     }
 }

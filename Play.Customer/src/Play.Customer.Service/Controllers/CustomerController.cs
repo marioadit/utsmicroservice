@@ -42,6 +42,7 @@ namespace Play.Customer.Service.Controllers
         {
             var customer = new Customers
             {
+                Id = customerDto.Id,
                 CustomerName = customerDto.CustomerName,
                 ContactNumber = customerDto.ContactNumber,
                 Email = customerDto.Email,

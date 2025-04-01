@@ -5,13 +5,14 @@
     <version>1.0.0</version>
     <authors>Play.Universal</authors>
     <description>Package Description</description>
-    <repository type="git" commit="ca9fd275dd6af379f5781d3b5f000723f44cde0d" />
+    <repository type="git" commit="939ec848136a0fe1af324ecf6c73e0e17a9330bf" />
     <dependencies>
       <group targetFramework="net9.0">
         <dependency id="Microsoft.Extensions.Configuration" version="9.0.3" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.Configuration.Binder" version="9.0.3" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.DependencyInjection" version="9.0.3" exclude="Build,Analyzers" />
         <dependency id="MongoDB.Driver" version="3.2.1" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="7.2.0" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>

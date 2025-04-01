@@ -10,7 +10,6 @@ namespace Play.Universal.MongoDB
     {
         private readonly IMongoCollection<T> dbCollection;
         private readonly FilterDefinitionBuilder<T> filterBuilder = Builders<T>.Filter;
-
         public IMongoRepository(IMongoDatabase database, string collectionName)
         {
             dbCollection = database.GetCollection<T>(collectionName);
@@ -18,7 +17,7 @@ namespace Play.Universal.MongoDB
 
         public async Task CreateAsync(T entity)
         {
-            await dbCollection.InsertOneAsync(entity);
+        await dbCollection.InsertOneAsync(entity);        
         }
 
         public async Task DeleteAsync(int id)

@@ -9,8 +9,7 @@
       "Play.Customer.Service/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "9.0.0",
-          "Play.Universal": "1.0.0",
-          "Swashbuckle.AspNetCore": "7.2.0"
+          "Play.Universal": "1.0.0"
         },
         "runtime": {
           "Play.Customer.Service.dll": {}
@@ -150,7 +149,8 @@
           "Microsoft.Extensions.Configuration": "9.0.3",
           "Microsoft.Extensions.Configuration.Binder": "9.0.3",
           "Microsoft.Extensions.DependencyInjection": "9.0.3",
-          "MongoDB.Driver": "3.2.1"
+          "MongoDB.Driver": "3.2.1",
+          "Swashbuckle.AspNetCore": "7.2.0"
         },
         "runtime": {
           "lib/net9.0/Play.Universal.dll": {
@@ -347,7 +347,7 @@
     "Play.Universal/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JD3IZ1HIFxUoH/mLe99igmkqdEGy63vSTZMFAmUXJ7Wj/sZ7NNzu2j0LdlSIf33ggXK4ZGmkpGXXZMEVf4aLtg==",
+      "sha512": "sha512-ABPeT7T8i7llChgqRZIgLZBFj/WHrguN9WDdMDWQPg2b0oeD8MMEuTErIQAP8C/T4enGpSU4QUT1GIEJ7ZJDng==",
       "path": "play.universal/1.0.0",
       "hashPath": "play.universal.1.0.0.nupkg.sha512"
     },
