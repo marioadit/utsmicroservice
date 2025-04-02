@@ -34,7 +34,7 @@ namespace Play.Customer.Service.Controllers
             {
                 return NotFound();
             }
-            return customer.AsDto();
+            return Ok(customer.AsDto());
         }
 
         [HttpPost]
@@ -45,7 +45,8 @@ namespace Play.Customer.Service.Controllers
                 CustomerName = customerDto.CustomerName,
                 ContactNumber = customerDto.ContactNumber,
                 Email = customerDto.Email,
-                Address = customerDto.Address
+                Address = customerDto.Address,
+                CreatedDate = DateTimeOffset.UtcNow
             };
             await customerRepository.CreateAsync(customer);
             return CreatedAtAction(nameof(GetAsync), new { id = customer.Id }, customer.AsDto());
