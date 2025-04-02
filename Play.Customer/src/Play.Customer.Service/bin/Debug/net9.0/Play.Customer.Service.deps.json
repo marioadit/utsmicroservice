@@ -347,7 +347,7 @@
     "Play.Universal/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ABPeT7T8i7llChgqRZIgLZBFj/WHrguN9WDdMDWQPg2b0oeD8MMEuTErIQAP8C/T4enGpSU4QUT1GIEJ7ZJDng==",
+      "sha512": "sha512-9pWB52G8KjB3IfJYCWB3WdqN8+X/W4QKwOLLqddx1k+uAWcnceFAQ9qhHXHI4ZHATt9vUT/EMGNgGiQoEkLYNg==",
       "path": "play.universal/1.0.0",
       "hashPath": "play.universal.1.0.0.nupkg.sha512"
     },

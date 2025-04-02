@@ -20,7 +20,7 @@ namespace Play.Universal.MongoDB
         await dbCollection.InsertOneAsync(entity);        
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             FilterDefinition<T> filter = filterBuilder.Eq(T => T.Id, id);
             await dbCollection.DeleteOneAsync(filter);
@@ -31,7 +31,7 @@ namespace Play.Universal.MongoDB
             return await dbCollection.Find(filterBuilder.Empty).ToListAsync();
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(Guid id)
         {
             FilterDefinition<T> filter = filterBuilder.Eq(T => T.Id, id);
             return await dbCollection.Find(filter).SingleOrDefaultAsync();

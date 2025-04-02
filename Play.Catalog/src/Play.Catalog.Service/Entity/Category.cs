@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Play.Universal
+namespace Play.Catalog.Service.Entity
 {
-    public interface IEntity
+    public class Category
     {
-        Guid Id { get; init; }
-
+        Guid id { get; set; }
     }
 }

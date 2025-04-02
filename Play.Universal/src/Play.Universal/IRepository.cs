@@ -7,10 +7,10 @@ namespace Play.Universal
 {
     public interface IRepository<T> where T : IEntity
     {
-        Task CreateAsync(T item);
         Task<IReadOnlyCollection<T>> GetAllAsync();
-        Task<T> GetAsync(int id);
-        Task DeleteAsync(int id);
+        Task<T> GetAsync(Guid id);
+        Task CreateAsync(T item);
         Task UpdateAsync(T item);
+        Task DeleteAsync(Guid id);
     }
 }

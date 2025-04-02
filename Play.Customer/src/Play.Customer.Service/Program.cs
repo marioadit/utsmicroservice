@@ -1,7 +1,13 @@
 using Play.Customer.Service.Entity;
 using Play.Universal.MongoDB;
+using Play.Universal;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
 builder.Services.AddControllers(
     options => options.SuppressAsyncSuffixInActionNames = false

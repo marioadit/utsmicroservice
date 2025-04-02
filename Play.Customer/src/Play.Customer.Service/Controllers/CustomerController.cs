@@ -27,7 +27,7 @@ namespace Play.Customer.Service.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CustomerDto>> GetAsync(int id)
+        public async Task<ActionResult<CustomerDto>> GetAsync(Guid id)
         {
             var customer = await customerRepository.GetAsync(id);
             if (customer is null)
@@ -42,7 +42,6 @@ namespace Play.Customer.Service.Controllers
         {
             var customer = new Customers
             {
-                Id = customerDto.Id,
                 CustomerName = customerDto.CustomerName,
                 ContactNumber = customerDto.ContactNumber,
                 Email = customerDto.Email,
@@ -53,7 +52,7 @@ namespace Play.Customer.Service.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutAsync(int id, UpdateCustomerDto customerDto)
+        public async Task<ActionResult> PutAsync(Guid id, UpdateCustomerDto customerDto)
         {
             var existingCustomer = await customerRepository.GetAsync(id);
             if (existingCustomer is null)
@@ -69,7 +68,7 @@ namespace Play.Customer.Service.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAsync(int id)
+        public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var existingCustomer = await customerRepository.GetAsync(id);
             if (existingCustomer is null)
