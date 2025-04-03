@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "KL/+wCPurS8RZhubFahnEB8oxDxa5Ogq8u/VstzApVk=",
+  "Source": "Play.Transaction.Service",
+  "BasePath": "_content/Play.Transaction.Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
