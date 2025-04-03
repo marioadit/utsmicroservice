@@ -14,17 +14,19 @@ namespace Play.Catalog.Service.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IRepository<Product> productRepository;
+        private readonly IRepository<Category> categoryRepository; // Tambahkan repositori Category untuk validasi CategoryId
 
-        public ProductController(IRepository<Product> productRepository)
+        public ProductController(IRepository<Product> productRepository, IRepository<Category> categoryRepository)
         {
             this.productRepository = productRepository;
+            this.categoryRepository = categoryRepository; // Inisialisasi repositori Category
         }
-        
+
         [HttpGet]
         public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
             var products = await productRepository.GetAllAsync();
-            return products.Select(category => category.AsDto());
+            return products.Select(product => product.AsDto());
         }
 
         [HttpGet("{id}")]
@@ -41,6 +43,18 @@ namespace Play.Catalog.Service.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductDto>> PostAsync(CreateProductDto productDto)
         {
+            if (productDto.CategoryId == Guid.Empty)
+            {
+                return BadRequest("CategoryId is required.");
+            }
+
+            // Validasi apakah CategoryId yang diberikan ada dalam database
+            var category = await categoryRepository.GetAsync(productDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Category not found.");
+            }
+
             var product = new Product
             {
                 ProductName = productDto.ProductName,
@@ -50,6 +64,7 @@ namespace Play.Catalog.Service.Controllers
                 Description = productDto.Description,
                 CreatedDate = DateTime.UtcNow
             };
+
             await productRepository.CreateAsync(product);
             return CreatedAtAction(nameof(GetAsync), new { id = product.Id }, product.AsDto());
         }
@@ -57,6 +72,18 @@ namespace Play.Catalog.Service.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutAsync(Guid id, UpdateProductDto productDto)
         {
+            if (productDto.CategoryId == Guid.Empty)
+            {
+                return BadRequest("CategoryId is required.");
+            }
+
+            // Validasi apakah CategoryId yang diberikan ada dalam database
+            var category = await categoryRepository.GetAsync(productDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Category not found.");
+            }
+
             var existingProduct = await productRepository.GetAsync(id);
             if (existingProduct is null)
             {
