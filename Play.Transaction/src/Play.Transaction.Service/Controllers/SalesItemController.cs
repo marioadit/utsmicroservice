@@ -17,13 +17,20 @@ namespace Play.Transaction.Service.Controllers
         private readonly IRepository<SaleItem> saleItemRepository;
         private readonly IRepository<Sale> saleRepository; // Tambahkan repositori Sale untuk validasi SaleId
         private readonly ProductClient productClient;
+        private readonly RabbitMqPublisher rabbitMqPublisher;
 
-        public SalesItemController(IRepository<SaleItem> saleItemRepository, IRepository<Sale> saleRepository, ProductClient productClient)
+        public SalesItemController(
+            IRepository<SaleItem> saleItemRepository,
+            IRepository<Sale> saleRepository,
+            ProductClient productClient,
+            RabbitMqPublisher rabbitMqPublisher)
         {
             this.saleItemRepository = saleItemRepository;
-            this.saleRepository = saleRepository; // Inisialisasi repositori Sale
+            this.saleRepository = saleRepository;
             this.productClient = productClient;
+            this.rabbitMqPublisher = rabbitMqPublisher;
         }
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SaleItemsDto>>> GetAllAsync()
@@ -114,6 +121,18 @@ namespace Play.Transaction.Service.Controllers
             };
 
             await saleItemRepository.CreateAsync(saleItem);
+
+            var stockChangeMessage = new
+            {
+                ProductId = saleItem.ProductId,
+                QuantityChanged = -saleItem.Quantity,
+                Action = "StockDecreased",
+                Source = "SalesItemController.Create",
+                Timestamp = DateTimeOffset.UtcNow
+            };
+
+            await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);
+
             return CreatedAtAction(nameof(GetAsync), new { id = saleItem.Id }, saleItem.AsDtto());
         }
 
@@ -173,6 +192,18 @@ namespace Play.Transaction.Service.Controllers
             existingSaleItem.Price = updateSaleItemDto.Price;
 
             await saleItemRepository.UpdateAsync(existingSaleItem);
+
+            var stockChangeMessage = new
+            {
+                ProductId = existingSaleItem.ProductId,
+                QuantityChanged = -quantityDiff, // bisa positif (nambah stok) atau negatif (kurangi)
+                Action = "StockAdjusted",
+                Source = "SalesItemController.Update",
+                Timestamp = DateTimeOffset.UtcNow
+            };
+
+            await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);
+
             return NoContent();
         }
 
@@ -206,6 +237,17 @@ namespace Play.Transaction.Service.Controllers
             }
 
             await saleItemRepository.DeleteAsync(id);
+            var stockChangeMessage = new
+            {
+                ProductId = existingSaleItem.ProductId,
+                QuantityChanged = existingSaleItem.Quantity, // restore
+                Action = "StockRestored",
+                Source = "SalesItemController.Delete",
+                Timestamp = DateTimeOffset.UtcNow
+            };
+
+            await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);
+
             return NoContent();
         }
     }
