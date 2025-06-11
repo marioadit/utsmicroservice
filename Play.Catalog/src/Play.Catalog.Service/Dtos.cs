@@ -8,7 +8,8 @@ namespace Play.Catalog.Service
 {
     public class Dtos
     {
-        public record ProductDto(Guid Id, string ProductName, Guid CategoryId, decimal Price, int StockQuantity, string Description, DateTimeOffset CreatedDate);
+        public record ProductDto(Guid Id, string ProductName, Guid CategoryId, decimal Price, int StockQuantity, string Description, DateTimeOffset CreatedDate);        
+        public record StockQuantityDto(Guid ProductId, int Quantity);
         public record CreateProductDto(string ProductName, Guid CategoryId, decimal Price, int StockQuantity, string Description);
         public record UpdateProductDto(string ProductName, Guid CategoryId, decimal Price, int StockQuantity, string Description);
         public record CategoryDto(Guid Id, string CategoryName, DateTimeOffset CreatedDate);

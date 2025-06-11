@@ -48,3 +48,4 @@ D:\Microservices\utsmicroservice\Play.Catalog\src\play.catalog.service\obj\Debug
 D:\Microservices\utsmicroservice\Play.Catalog\src\play.catalog.service\obj\Debug\net9.0\Play.Catalog.Service.pdb
 D:\Microservices\utsmicroservice\Play.Catalog\src\play.catalog.service\obj\Debug\net9.0\Play.Catalog.Service.genruntimeconfig.cache
 D:\Microservices\utsmicroservice\Play.Catalog\src\play.catalog.service\obj\Debug\net9.0\ref\Play.Catalog.Service.dll
+D:\Microservices\utsmicroservice\Play.Catalog\src\Play.Catalog.Service\bin\Debug\net9.0\RabbitMQ.Client.dll

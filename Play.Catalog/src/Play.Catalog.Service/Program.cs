@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using Play.Catalog.Service;
 using Play.Catalog.Service.Entity;
 using Play.Universal.MongoDB;
 
@@ -18,6 +19,8 @@ builder.Services.AddOpenApi();
 
 // Add swagger
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHostedService<ConsumeRabbitMQHostedServices>();
 
 builder.Services.AddMongo().AddMongoRepository<Category>("categories");
 builder.Services.AddMongo().AddMongoRepository<Product>("products");

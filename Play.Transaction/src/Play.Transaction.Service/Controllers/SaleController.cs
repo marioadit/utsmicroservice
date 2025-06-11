@@ -16,11 +16,15 @@ namespace Play.Transaction.Service.Controllers
     {
         private readonly IRepository<Sale> saleRepository;
         private readonly CustomerClient customerClient;
+        private readonly IRepository<SaleItem> saleItemRepository;
+        private readonly ProductClient productClient;
 
-        public SaleController(IRepository<Sale> saleRepository, CustomerClient customerClient)
+        public SaleController(IRepository<Sale> saleRepository, CustomerClient customerClient, IRepository<SaleItem> saleItemRepository, ProductClient productClient)
         {
             this.saleRepository = saleRepository;
             this.customerClient = customerClient;
+            this.saleItemRepository = saleItemRepository;
+            this.productClient = productClient;
         }
 
         [HttpGet]
@@ -47,7 +51,7 @@ namespace Play.Transaction.Service.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<SaleDto>> GetAsync(Guid id)
+        public async Task<ActionResult<DetailSaleDto>> GetAsync(Guid id)
         {
             var sale = await saleRepository.GetAsync(id);
             if (sale is null)
@@ -61,12 +65,21 @@ namespace Play.Transaction.Service.Controllers
                 return BadRequest("Customer not found");
             }
 
-            var saleDto = new SaleDto(
+            var saleDto = new DetailSaleDto(
                 sale.Id,
                 sale.CustomerId,
+                customer.CustomerName,
                 sale.SaleDate,
-                sale.TotalAmount,
-                sale.CreatedDate
+                sale.CreatedDate,
+                sale.SaleItems.Select(si => new SaleItemDto(
+                    si.Id,
+                    si.SaleId,
+                    si.ProductId,
+                    si.Quantity,
+                    si.Price,
+                    si.CreatedDate
+                )).ToList(),
+                sale.TotalAmount
             );
 
             return Ok(saleDto);

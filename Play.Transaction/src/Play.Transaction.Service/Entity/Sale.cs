@@ -13,5 +13,6 @@ namespace Play.Transaction.Service.Entity
         public DateTimeOffset SaleDate { get; set; }
         public decimal TotalAmount { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
+        public List<SaleItem> SaleItems { get; set; }
     }
 }

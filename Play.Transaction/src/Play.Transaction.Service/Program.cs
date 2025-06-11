@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Play.Transaction.Service.Clients;
+using Play.Transaction.Service.Controllers;
 using Play.Transaction.Service.Entity;
 using Play.Universal.MongoDB;
 
@@ -32,6 +33,8 @@ builder.Services.AddHttpClient<ProductClient>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7052");
 });
+
+builder.Services.AddSingleton<RabbitMqPublisher>();
 
 var app = builder.Build();
 

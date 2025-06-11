@@ -17,5 +17,18 @@ namespace Play.Transaction.Service
         {
             return new SaleItemDto(saleItem.Id, saleItem.SaleId, saleItem.ProductId, saleItem.Quantity, saleItem.Price, saleItem.CreatedDate);
         }
+        public static SaleItemsDto AsDtto(this SaleItem saleItem, ProductDto product)
+        {
+            return new SaleItemsDto(
+                saleItem.Id,
+                saleItem.SaleId,
+                saleItem.ProductId,
+                product.ProductName,
+                saleItem.Quantity,
+                saleItem.Price,
+                saleItem.CreatedDate
+            );
+        }
+
     }
 }
