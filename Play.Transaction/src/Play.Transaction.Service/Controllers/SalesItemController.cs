@@ -125,6 +125,7 @@ namespace Play.Transaction.Service.Controllers
             var stockChangeMessage = new
             {
                 ProductId = saleItem.ProductId,
+                ProductName = product.ProductName,
                 QuantityChanged = -saleItem.Quantity,
                 Action = "StockDecreased",
                 Source = "SalesItemController.Create",
@@ -196,6 +197,7 @@ namespace Play.Transaction.Service.Controllers
             var stockChangeMessage = new
             {
                 ProductId = existingSaleItem.ProductId,
+                ProductName = product.ProductName,
                 QuantityChanged = -quantityDiff, // bisa positif (nambah stok) atau negatif (kurangi)
                 Action = "StockAdjusted",
                 Source = "SalesItemController.Update",
@@ -240,6 +242,7 @@ namespace Play.Transaction.Service.Controllers
             var stockChangeMessage = new
             {
                 ProductId = existingSaleItem.ProductId,
+                ProductName = product?.ProductName ?? "Unknown Product",
                 QuantityChanged = existingSaleItem.Quantity, // restore
                 Action = "StockRestored",
                 Source = "SalesItemController.Delete",
@@ -249,6 +252,21 @@ namespace Play.Transaction.Service.Controllers
             await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);
 
             return NoContent();
+        }
+        // Temporary test endpoint in your controller
+        [HttpGet("test-rabbit")]
+        public async Task<IActionResult> TestRabbit()
+        {
+            try
+            {
+                var testMessage = new { Test = "Hello RabbitMQ", Time = DateTime.UtcNow };
+                await rabbitMqPublisher.PublishMessageAsync(testMessage);
+                return Ok("Message published");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Failed: {ex.Message}");
+            }
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Play.Catalog.Service
             _connection = await factory.CreateConnectionAsync();
             _channel = await _connection.CreateChannelAsync();
 
-            await _channel.QueueDeclareAsync(queue: "task_queue", durable: false, exclusive: false, autoDelete: false, arguments: null);
+            await _channel.QueueDeclareAsync(queue: "task_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
             await _channel.BasicQosAsync(prefetchCount: 1, prefetchSize: 0, global: false);
 
             // Initialize RabbitMQ connection and channel here.

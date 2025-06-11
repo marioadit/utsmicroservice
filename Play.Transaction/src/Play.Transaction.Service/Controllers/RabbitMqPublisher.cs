@@ -4,28 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 
 namespace Play.Transaction.Service.Controllers
 {
+    // RabbitMqPublisher is a service that publishes messages to a RabbitMQ queue.
+    // It uses the RabbitMQ.Client library to connect to RabbitMQ and send messages.
+    // The messages are serialized to JSON format before being sent.
+    // The queue is durable, meaning messages will be saved even if RabbitMQ restarts.
+    // The publisher logs information about the message being published.
+
     public class RabbitMqPublisher
     {
         private readonly ConnectionFactory factory;
+        private readonly ILogger<RabbitMqPublisher> _logger;
         private const string QueueName = "task_queue";
 
-        public RabbitMqPublisher(IConfiguration configuration)
+        public RabbitMqPublisher(IConfiguration configuration, ILogger<RabbitMqPublisher> logger)
         {
+            _logger = logger;
             var uri = configuration["RabbitMQ:Uri"];
             factory = new ConnectionFactory()
             {
-                Uri = new Uri("amqp://guest:guest@localhost:5672")
+                Uri = new Uri(uri ?? "amqp://guest:guest@localhost:5672")
             };
         }
 
         public async Task PublishMessageAsync(object message)
         {
-            using var connection = await factory.CreateConnectionAsync();
-            using var channel = await connection.CreateChannelAsync();
+            _logger.LogInformation("Preparing to publish to RabbitMQ: {@Message}", message);
+
+            using var _connection = await factory.CreateConnectionAsync();
+            using var channel = await _connection.CreateChannelAsync();
 
             await channel.QueueDeclareAsync(
                 queue: QueueName,
@@ -39,7 +51,7 @@ namespace Play.Transaction.Service.Controllers
 
             var properties = new BasicProperties
             {
-                Persistent = true
+                DeliveryMode = (DeliveryModes)2 // Make message persistent
             };
 
             await channel.BasicPublishAsync(
@@ -48,19 +60,22 @@ namespace Play.Transaction.Service.Controllers
                 mandatory: true,
                 basicProperties: properties,
                 body: body);
+
+            _logger.LogInformation("Message successfully published to queue {QueueName}", QueueName);
         }
+
 
     }
 }
 
 // to use the RabbitMqPublisher in the SalesItemController, you would inject it in the constructor and call it like this:
-            // var stockChangeMessage = new
-            // {
-            //     ProductId = existing.ProductId,
-            //     QuantityChanged = -existing.Quantity,
-            //     Action = "StockDecreased",
-            //     Source = "SalesItemController.Create",
-            //     Timestamp = DateTimeOffset.UtcNow
-            // };
+// var stockChangeMessage = new
+// {
+//     ProductId = existing.ProductId,
+//     QuantityChanged = -existing.Quantity,
+//     Action = "StockDecreased",
+//     Source = "SalesItemController.Create",
+//     Timestamp = DateTimeOffset.UtcNow
+// };
 
-            // await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);
+// await rabbitMqPublisher.PublishMessageAsync(stockChangeMessage);

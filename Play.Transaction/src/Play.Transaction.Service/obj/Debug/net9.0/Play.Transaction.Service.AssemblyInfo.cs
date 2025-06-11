@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Play.Transaction.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c520ca0d48b3fc85555e60dae39ea1485df42bed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9890bbe9b9528768f2ca82c8ddba2fdc9506b65")]
 [assembly: System.Reflection.AssemblyProductAttribute("Play.Transaction.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Play.Transaction.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
