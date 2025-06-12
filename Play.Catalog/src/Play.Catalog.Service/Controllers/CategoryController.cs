@@ -40,6 +40,21 @@ namespace Play.Catalog
             return CreatedAtAction(nameof(GetAsync), new { id = category.Id }, category.AsDto());
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutAsync(Guid id, UpdateCategoryDto updateCategoryDto)
+        {
+            var existingCategory = await categoryRepository.GetAsync(id);
+            if (existingCategory is null)
+            {
+                return NotFound();
+            }
+
+            existingCategory.CategoryName = updateCategoryDto.CategoryName;
+            await categoryRepository.UpdateAsync(existingCategory);
+
+            return NoContent();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoryDto>> GetAsync(Guid id)
         {
